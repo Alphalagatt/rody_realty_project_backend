@@ -6,10 +6,14 @@ const Crypto = require("crypto");
 
 //list all users registered in the system
 router.get("/user_details",(req,res,next)=>{
-    res.send({
-        email:"lagattalpha@gmail.com",
-        givenNames:"Alpha Kipngetich",
-        sirName:"Lagatt"
+    User.find().exec().then((result)=>{
+        res.status(200).json({
+            my_result:result
+        });
+    }).catch((err)=>{
+        res.status(400).json({
+            error:err.message
+        });
     });
 });
 
@@ -54,9 +58,14 @@ router.post("/user_details/new_user",(req,res,next)=>{
 })
 
 //edit user accounts
+router.put("/user_details/edit_user/:id",(req,res,next)=>{
 
+})
 
 //change password
+router.put("/user_details/change_password/:id",(req,res,next)=>{
+    
+})
 
 
 module.exports = router;

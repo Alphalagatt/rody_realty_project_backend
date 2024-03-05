@@ -22,8 +22,9 @@ Mongoose.connect(DBConnectionString).then(()=>{
 app.use("/registration",signup);
 
 app.get("/",(req,res,next)=>{
-    res.send(JSON.stringify(DBConnectionString));
-    console.log(port);
+    res.status(500).json({
+        message:"Bad request page not found!"
+    })
     
 });
 
